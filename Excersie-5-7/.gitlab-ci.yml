@@ -1,0 +1,13 @@
+---
+image: hacmieu89/ansible
+stages:
+ - run
+job1:
+  stage: run
+  script:
+    - rm -rf /etc/ansible
+    - mkdir -pv /etc/ansible
+    - cp -rf * /etc/ansible
+    - ansible-galaxy collection install cisco.ios
+    - ansible-playbook -i hosts setrouter.yml
+
